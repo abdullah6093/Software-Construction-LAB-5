@@ -35,5 +35,15 @@ public class Main {
         
         final List<Tweet> talkTweets = Filter.containing(tweets, Arrays.asList("talk"));
         System.out.println("Tweets containing 'talk': " + talkTweets.size());
+        
+        // Lab 07: Infer the social network and print influencers
+        final java.util.Map<String, Set<String>> followsGraph = SocialNetwork.guessFollowsGraph(tweets);
+        System.out.println("Follows graph has " + followsGraph.size() + " nodes");
+        
+        final List<String> influencers = SocialNetwork.influencers(followsGraph);
+        System.out.println("Top influencers:");
+        for (String username : influencers) {
+            System.out.println(username);
+        }
     }
 }
